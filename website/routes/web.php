@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/products/{product}', 'ProductController@detail');
 Route::get('/products/list/{category}', 'ProductController@kindList');
-Route::get('/products/list', 'ProductController@index');
+Route::get('/products', 'ProductController@index');
 
 Route::get('/shopping-art', 'TransactionController@shoppingCart');
 Route::get('/transaction/make-order', 'TransactionController@makeOrder');
