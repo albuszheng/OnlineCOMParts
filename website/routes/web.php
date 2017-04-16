@@ -32,14 +32,16 @@ Route::get('/transaction/make-order', 'TransactionController@makeOrder');
 Route::post('/transaction/make-order/purchase', 'TransactionController@purchase');
 Route::get('/transaction/record/{record}', 'TransactionController@record');
 
-Route::get('store/{store}/contact', 'StoreController@contact');
-Route::get('store/{store}/products', 'StoreController@products');
-Route::get('store/{store}/salesperson', 'StoreController@salesperson');
+Route::get('/store/{store}/contact', 'StoreController@contact');
+Route::get('/store/{store}/products', 'StoreController@products');
+Route::get('/store/{store}/salesperson', 'StoreController@salesperson');
 
-Route::get('dashboard/{store}', 'SalespersonController@index');
-Route::get('dashboard/{store}/inventory/list', 'SalespersonController@inventory');
-Route::post('dashboard/{store}/update-inventory/{product}', 'SalespersonController@updateInventory');
-Route::post('dashboard/{store}/new-product', 'SalespersonController@newProduct');
+Route::get('/dashboard/{store}', 'SalespersonController@index');
+Route::get('/dashboard/{store}/inventory/list', 'SalespersonController@inventory');
+Route::post('/dashboard/{store}/update-inventory/{product}', 'SalespersonController@updateInventory');
+Route::post('/dashboard/{store}/new-product', 'SalespersonController@newProduct');
 
-Route::get('customer/{customer}/transaction-history', 'CustomerController@transactionHistory');
+Route::get('/customer/{customer}/transaction-history', 'CustomerController@transactionHistory');
 //Route::get('customer/{customer}/')
+
+Route::get('/test', 'HomeController@test');

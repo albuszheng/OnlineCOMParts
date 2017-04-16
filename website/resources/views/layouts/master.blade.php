@@ -16,6 +16,7 @@
     @yield('custom-css')
 </head>
 <body>
+    @include('layouts.nav_bar')
 
     <div class="container">
         @yield('content')
