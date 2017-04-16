@@ -13,7 +13,9 @@ class Store extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('store', function (Blueprint $table) {
+			//
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class Store extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('store');
     }
 }

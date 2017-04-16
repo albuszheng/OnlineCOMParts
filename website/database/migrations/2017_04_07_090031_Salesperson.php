@@ -13,7 +13,9 @@ class Salesperson extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('salesperson', function (Blueprint $table) {
+			//
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class Salesperson extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('salesperson');
     }
 }

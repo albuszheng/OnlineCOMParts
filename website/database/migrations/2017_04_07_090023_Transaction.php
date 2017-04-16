@@ -13,7 +13,9 @@ class Transaction extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('transactions', function (Blueprint $table) {
+			//
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class Transaction extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('transactions');
     }
 }

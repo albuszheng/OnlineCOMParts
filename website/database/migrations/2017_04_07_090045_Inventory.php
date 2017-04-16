@@ -13,7 +13,9 @@ class Inventory extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('inventory', function (Blueprint $table) {
+			//
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class Inventory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('inventory');
     }
 }
