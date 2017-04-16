@@ -14,7 +14,15 @@ class Store extends Migration
     public function up()
     {
         Schema::create('store', function (Blueprint $table) {
-			//
+            $table->increments('id');
+            $table->string('Address', 11);
+            $table->string('SalespersonNum', 11);
+            $table->unsignedInteger('ManagerID');
+            $table->unsignedInteger('RegionID');
+
+//            $table->primary('id');
+//            $table->foreign('ManagerID')->references('id')->on('salesperson');
+            $table->foreign('RegionID')->references('id')->on('regions');
         });
     }
 
