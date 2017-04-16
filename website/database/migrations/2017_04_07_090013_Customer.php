@@ -13,7 +13,9 @@ class Customer extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('customer_info', function (Blueprint $table) {
+			//
+        });
     }
 
     /**

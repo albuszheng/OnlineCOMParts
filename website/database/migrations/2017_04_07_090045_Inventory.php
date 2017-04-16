@@ -13,7 +13,9 @@ class Inventory extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('inventory', function (Blueprint $table) {
+			//
+        });
     }
 
     /**

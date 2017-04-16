@@ -13,7 +13,9 @@ class Salesperson extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('salesperson', function (Blueprint $table) {
+			//
+        });
     }
 
     /**

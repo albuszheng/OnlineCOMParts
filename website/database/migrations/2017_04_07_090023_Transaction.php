@@ -13,7 +13,9 @@ class Transaction extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('transactions', function (Blueprint $table) {
+			//
+        });
     }
 
     /**
