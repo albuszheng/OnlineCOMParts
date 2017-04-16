@@ -25,6 +25,6 @@ class Customer extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('customer_info');
     }
 }

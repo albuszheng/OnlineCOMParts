@@ -25,6 +25,6 @@ class Inventory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('inventory');
     }
 }

@@ -25,6 +25,6 @@ class Salesperson extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('salesperson');
     }
 }

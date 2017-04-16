@@ -25,6 +25,6 @@ class Store extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('store');
     }
 }
