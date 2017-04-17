@@ -14,7 +14,14 @@ class Inventory extends Migration
     public function up()
     {
         Schema::create('inventory', function (Blueprint $table) {
-			//
+            $table->unsignedInteger('StoreID');
+            $table->unsignedInteger('ProductID');
+            $table->string('InventoryNum', 11);
+            $table->dateTime('LastUpdate');
+
+            $table->primary(['StoreID', 'ProductID']);
+            $table->foreign('StoreID')->references('id')->on('store');
+            $table->foreign('ProductID')->references('id')->on('products');
         });
     }
 
@@ -25,6 +32,6 @@ class Inventory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('inventory');
     }
 }

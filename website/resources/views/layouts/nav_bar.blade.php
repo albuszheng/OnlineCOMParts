@@ -11,7 +11,7 @@
                     <a class="nav-link" href="#">Products <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Stores</a>
+                    <a class="nav-link" href="/store/list">Stores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Orders</a>

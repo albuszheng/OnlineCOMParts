@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Customer extends Migration
+class Salesperson extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class Customer extends Migration
      */
     public function up()
     {
-        Schema::create('customer_info', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+        Schema::create('salesperson', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('FullName', 11);
             $table->string('Email', 11);
-            $table->string('AddressStreet', 11);
-            $table->string('AddressCity', 11);
-            $table->string('AddressState', 11);
-            $table->string('AddressZip', 11);
-            $table->string('Kind', 11);
+            $table->string('Address', 11);
+            $table->string('Salary', 11);
+            $table->string('JobTitle', 11);
+            $table->unsignedInteger('StoreID');
 
             $table->foreign('id')->references('id')->on('users');
-            $table->primary('id');
+            $table->foreign('StoreID')->references('id')->on('store');
+//            $table->primary('id');
         });
     }
 
@@ -35,6 +35,6 @@ class Customer extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_info');
+        Schema::dropIfExists('salesperson');
     }
 }

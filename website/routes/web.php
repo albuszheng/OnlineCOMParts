@@ -24,14 +24,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/products/{product}', 'ProductController@detail');
-Route::get('/products/list/{category}', 'ProductController@kindList');
+Route::get('/products/l/{category}', 'ProductController@kindList');
 Route::get('/products', 'ProductController@index');
 
 Route::get('/shopping-art', 'TransactionController@shoppingCart');
 Route::get('/transaction/make-order', 'TransactionController@makeOrder');
 Route::post('/transaction/make-order/purchase', 'TransactionController@purchase');
-Route::get('/transaction/record/{record}', 'TransactionController@record');
+Route::get('/transaction/r/{record}', 'TransactionController@record');
 
+Route::get('/store/list', 'StoreController@index');
 Route::get('/store/{store}/contact', 'StoreController@contact');
 Route::get('/store/{store}/products', 'StoreController@products');
 Route::get('/store/{store}/salesperson', 'StoreController@salesperson');

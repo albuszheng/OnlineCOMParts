@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <p>{{ $cpu }}</p>
                 </div>
             </div>
         </div>
