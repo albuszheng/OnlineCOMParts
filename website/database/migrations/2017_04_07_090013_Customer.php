@@ -23,7 +23,7 @@ class Customer extends Migration
             $table->string('AddressZip', 11);
             $table->string('Kind', 11);
 
-            $table->foreign('id')->references('id')->on('user_login');
+            $table->foreign('id')->references('id')->on('users');
             $table->primary('id');
         });
     }

@@ -22,7 +22,7 @@ class Salesperson extends Migration
             $table->string('JobTitle', 11);
             $table->unsignedInteger('StoreID');
 
-            $table->foreign('id')->references('id')->on('user_login');
+            $table->foreign('id')->references('id')->on('users');
             $table->foreign('StoreID')->references('id')->on('store');
 //            $table->primary('id');
         });

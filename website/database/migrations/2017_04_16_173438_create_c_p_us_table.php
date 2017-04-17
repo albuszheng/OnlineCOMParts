@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateCPUsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('c_p_us', function (Blueprint $table) {
+//            $table->unsignedInteger('id');
+            $table->string('Name', 11);
+            $table->string('Manufacturer', 11);
+            $table->integer('OperatingFrenquency');
+            $table->integer('Cores');
+            $table->integer('ThermalDesignPower');
+
+            $table->primary('Name');
+//            $table->foreign('id')->references('id')->on('products');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('c_p_us');
+    }
+}

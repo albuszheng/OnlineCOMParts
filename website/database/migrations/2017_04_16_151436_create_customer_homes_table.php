@@ -20,7 +20,7 @@ class CreateCustomerHomesTable extends Migration
             $table->string('Income', 11);
             $table->string('MarriageStatus', 11);
 
-            $table->foreign('id')->references('id')->on('user_login');
+            $table->foreign('id')->references('id')->on('users');
             $table->primary('id');
         });
     }

@@ -1,4 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('custom-css')
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
+@endsection
 
 @section('content')
 <div class="container">

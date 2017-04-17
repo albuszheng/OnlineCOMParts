@@ -18,7 +18,7 @@ class CreateCustomerBusinessesTable extends Migration
             $table->string('BusinessCategory', 11);
             $table->string('AnnualIncome', 11);
 
-            $table->foreign('id')->references('id')->on('user_login');
+            $table->foreign('id')->references('id')->on('users');
             $table->primary('id');
         });
     }

@@ -18,7 +18,7 @@
                 <div class="product-info">
                     <h3 class="name">{{ $product->name }}</h3>
                     <p class="kind">{{ $product->kind }}</p>
-                    <p class="store">{{ $product-storeName }}</p>
+                    <p class="store">{{ $product->storeName }}</p>
                 </div>
                 <p class="price">
                     {{ $product->price }}
