@@ -27,10 +27,13 @@ Route::get('/products/{product}', 'ProductController@detail');
 Route::get('/products/l/{category}', 'ProductController@kindList');
 Route::get('/products', 'ProductController@index');
 
-Route::get('/shopping-art', 'TransactionController@shoppingCart');
-Route::get('/transaction/make-order', 'TransactionController@makeOrder');
-Route::post('/transaction/make-order/purchase', 'TransactionController@purchase');
-Route::get('/transaction/r/{record}', 'TransactionController@record');
+Route::get('/products/l/cpu', function () {
+    return view('cpu');
+});
+
+Route::get('/transaction/new-order', 'TransactionController@makeOrder');
+Route::post('/transaction/new-order', 'TransactionController@purchase');
+Route::get('/transaction/{record}', 'TransactionController@record');
 
 Route::get('/store/list', 'StoreController@index');
 Route::get('/store/{store}/contact', 'StoreController@contact');

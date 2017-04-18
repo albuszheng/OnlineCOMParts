@@ -13,19 +13,36 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function test_home_loading()
     {
-        $response = $this->get('/home');
+        $response = $this->get('/');
         $response->assertStatus(200);
     }
 
-    public function testBasicTest_1()
+    public function test_home_content()
     {
-        $this->get('/home')->assertSee('OperatingFrequency');
+        $this->get('/')->assertSee('CPU');
     }
+
+    public function test_product_cpu_loading()
+    {
+        $response = $this->get('/products/l/cpu');
+        $response->assertStatus(200);
+    }
+
+    public function test_product_cpu_content()
+    {
+        $this->get('/products/l/cpu')->assertSee('AMD');
+    }
+
+    public function test_product_cpu_click()
+    {
+        $this->get('/products/l/cpu')
+            ->check('intel')
+            ->assertDontSee('AMD');
+    }
+
+
 }
 
-//given (pre-given)
-//when (action for test)
-//then (assert)
 
