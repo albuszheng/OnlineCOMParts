@@ -15,6 +15,17 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/home');
+        $response->assertStatus(200);
+    }
+
+    public function testBasicTest_1()
+    {
+        $this->get('/home')->assertSee('OperatingFrequency');
     }
 }
+
+//given (pre-given)
+//when (action for test)
+//then (assert)
+
