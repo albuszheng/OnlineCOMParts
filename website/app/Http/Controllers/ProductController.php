@@ -10,6 +10,7 @@ use App\Store;
 use App\VideoCard;
 use Illuminate\Http\Request;
 use App\Product;
+use function PHPSTORM_META\type;
 
 class ProductController extends Controller
 {
@@ -40,7 +41,8 @@ class ProductController extends Controller
     }
 
     public function detail($id) {
-        $res = Product::find($id);
-        return view('product/detail', compact($res));
+        $res = Product::findProduct($id);
+        $spec = Product::findSpec($res->id, $res->ProductKind);
+        return view('products.product_detail', ["spec" => $spec, "product" => $res]);
     }
 }
