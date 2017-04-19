@@ -7,17 +7,25 @@ use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
-    public static function findProduct($id){
-        $temp = DB::table('products')->where('id', '=', $id)->get()->first();
-//        $kind =$temp->ProductKind;
-//        $res = DB::table('products')
-//            ->where('id', $id)
-//            ->join($kind, $kind.'.Name', '=', 'products.Name')
-//            ->get()->first();
-        return $temp;
-    }
 
     public function CPU() {
-        return $this->hasOne('APP\CPU', 'ProductName', 'Name');
+        return $this->belongsTo(CPU::class, 'ProductName', 'Name');
     }
+
+    public function GPU() {
+        return $this->belongsTo(VideoCard::class, 'ProductName', 'Name');
+    }
+
+    public function Memory() {
+        return $this->belongsTo(Memory::class, 'ProductName', 'Name');
+    }
+
+    public function Motherboard() {
+        return $this->belongsTo(Motherboard::class, 'ProductName', 'Name');
+    }
+
+    public function Storage() {
+        return $this->belongsTo(Storage::class, 'ProductName', 'Name');
+    }
+
 }
