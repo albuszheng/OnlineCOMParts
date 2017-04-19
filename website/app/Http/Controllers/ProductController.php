@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\CPU;
+use App\Memory;
+use App\Motherboard;
+use App\Storage;
+use App\Store;
+use App\VideoCard;
 use Illuminate\Http\Request;
 use App\Product;
 
@@ -13,8 +19,24 @@ class ProductController extends Controller
     }
 
     public function kindList($kind) {
-        $res = Product::findKind($kind);
-        return view('product/all', compact($res));
+        switch ($kind) {
+            case "cpu":
+                return view("products.product_list", ["products" => CPU::getCPU(), "kind" => "CPU"]);
+                break;
+            case "gpu":
+                return view("products.product_list", ["products" => VideoCard::getGPU(), "kind" => "GPU"]);
+                break;
+            case "memory":
+                return view("products.product_list", ["products" => Memory::getMemory(), "kind" => "Memory"]);
+                break;
+            case "motherboard":
+                return view("products.product_list", ["products" => Motherboard::getMotherboard(), "kind" => "Motherboard"]);
+                break;
+            case "harddrive":
+                return view("products.product_list", ["products" => Storage::getStorage(), "kind" => "Storage"]);
+                break;
+        }
+        return redirect("/404");
     }
 
     public function detail($id) {

@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/404', function() {
+    return view('layouts.404');
+});
+
 Route::get('/about', function () {
     return view('about');
 });
@@ -27,9 +31,6 @@ Route::get('/products/{product}', 'ProductController@detail');
 Route::get('/products/l/{category}', 'ProductController@kindList');
 Route::get('/products', 'ProductController@index');
 
-Route::get('/products/l/cpu', function () {
-    return view('cpu');
-});
 
 Route::get('/transaction/new-order', 'TransactionController@makeOrder');
 Route::post('/transaction/new-order', 'TransactionController@purchase');

@@ -13,7 +13,7 @@
         </form>
     </div>
     <div class="col-9">
-        {{--@foreach ($products as $product)--}}
+        @foreach ($products as $product)
             <div class="product-item">
                 <div class="product-info">
                     <h3 class="name">Intel core i7-7600k</h3>
@@ -27,6 +27,6 @@
                     <a class="purchase btn btn-primary">Purchase</a>
                 </div>
             </div>
-        {{--@endforeach--}}
+        @endforeach
     </div>
 @endsection

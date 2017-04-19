@@ -15,9 +15,9 @@ class CreateCPUsTable extends Migration
     {
         Schema::create('c_p_us', function (Blueprint $table) {
 //            $table->unsignedInteger('id');
-            $table->string('Name', 11);
+            $table->string('Name', 50);
             $table->string('Manufacturer', 11);
-            $table->integer('OperatingFrenquency');
+            $table->float('OperatingFrenquency', 5, 2);
             $table->integer('Cores');
             $table->integer('ThermalDesignPower');
 
