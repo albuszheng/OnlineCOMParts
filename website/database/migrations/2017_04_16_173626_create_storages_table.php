@@ -13,15 +13,15 @@ class CreateStoragesTable extends Migration
      */
     public function up()
     {
-        Schema::create('storages', function (Blueprint $table) {
+        Schema::create('Storage', function (Blueprint $table) {
 //            $table->unsignedInteger('id');
             $table->string('Name', 11);
             $table->string('Manufacturer', 11);
             $table->string('Form', 11);
             $table->string('Type', 11);
-            $table->string('Capacity', 11);
+            $table->integer('Capacity');
             $table->string('Cache', 11);
-            $table->string('PricePerGB', 11);
+            $table->float('PricePerGB', 5,3);
 
             $table->primary('Name');
 //            $table->foreign('id')->references('id')->on('products');
@@ -35,6 +35,6 @@ class CreateStoragesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('storages');
+        Schema::dropIfExists('Storage');
     }
 }

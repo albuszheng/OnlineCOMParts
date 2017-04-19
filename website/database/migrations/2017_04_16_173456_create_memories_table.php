@@ -13,15 +13,15 @@ class CreateMemoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('memories', function (Blueprint $table) {
+        Schema::create('Memory', function (Blueprint $table) {
 //            $table->unsignedInteger('id');
-            $table->string('Name', 11);
-            $table->string('Manufacturer', 11);
-            $table->string('Speed', 11);
-            $table->string('CAS', 11);
+            $table->string('Name', 50);
+            $table->string('Manufacturer', 20);
+            $table->string('Speed', 10);
+            $table->integer('CAS');
             $table->string('Modules', 11);
-            $table->string('Size', 11);
-            $table->string('PricePerGB', 11);
+            $table->integer('Size');
+            $table->float('PricePerGB', 5,2);
 
             $table->primary('Name');
 //            $table->foreign('id')->references('id')->on('products');
@@ -35,6 +35,6 @@ class CreateMemoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memories');
+        Schema::dropIfExists('Memory');
     }
 }

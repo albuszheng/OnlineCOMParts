@@ -13,7 +13,7 @@ class CreateCPUsTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_p_us', function (Blueprint $table) {
+        Schema::create('CPU', function (Blueprint $table) {
 //            $table->unsignedInteger('id');
             $table->string('Name', 50);
             $table->string('Manufacturer', 11);
@@ -33,6 +33,6 @@ class CreateCPUsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_p_us');
+        Schema::dropIfExists('CPU');
     }
 }

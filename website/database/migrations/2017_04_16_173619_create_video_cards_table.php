@@ -13,13 +13,13 @@ class CreateVideoCardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_cards', function (Blueprint $table) {
+        Schema::create('VideoCard', function (Blueprint $table) {
 //            $table->unsignedInteger('id');
-            $table->string('Name', 11);
-            $table->string('Manufacturer', 11);
-            $table->string('Chipset', 11);
-            $table->string('Memory', 11);
-            $table->string('CoreClock', 11);
+            $table->string('Name', 50);
+            $table->string('Manufacturer', 20);
+            $table->string('Chipset', 20);
+            $table->integer('Memory');
+            $table->float('CoreClock', 5,3);
 
             $table->primary('Name');
 //            $table->foreign('id')->references('id')->on('products');
@@ -33,6 +33,6 @@ class CreateVideoCardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_cards');
+        Schema::dropIfExists('VideoCard');
     }
 }

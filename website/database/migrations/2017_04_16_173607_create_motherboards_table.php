@@ -13,13 +13,14 @@ class CreateMotherboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('motherboards', function (Blueprint $table) {
+        Schema::create('Motherboard', function (Blueprint $table) {
 //            $table->unsignedInteger('id');
-            $table->string('Name', 11);
+            $table->string('Name', 50);
+            $table->string('Manufacturer', 20);
             $table->string('SocketCPU', 11);
             $table->string('FormFactor', 11);
-            $table->string('RAMSlots', 11);
-            $table->string('MaxRAM', 11);
+            $table->integer('RAMSlots');
+            $table->integer('MaxRAM');
 
             $table->primary('Name');
 //            $table->foreign('id')->references('id')->on('products');
@@ -33,6 +34,6 @@ class CreateMotherboardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('motherboards');
+        Schema::dropIfExists('Motherboard');
     }
 }
