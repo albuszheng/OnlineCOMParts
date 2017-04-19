@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/404', function() {
+    return view('layouts.404');
+});
+
 Route::get('/about', function () {
     return view('about');
 });
@@ -27,10 +31,10 @@ Route::get('/products/{product}', 'ProductController@detail');
 Route::get('/products/l/{category}', 'ProductController@kindList');
 Route::get('/products', 'ProductController@index');
 
-Route::get('/shopping-art', 'TransactionController@shoppingCart');
-Route::get('/transaction/make-order', 'TransactionController@makeOrder');
-Route::post('/transaction/make-order/purchase', 'TransactionController@purchase');
-Route::get('/transaction/r/{record}', 'TransactionController@record');
+
+Route::get('/transaction/new-order', 'TransactionController@makeOrder');
+Route::post('/transaction/new-order', 'TransactionController@purchase');
+Route::get('/transaction/{record}', 'TransactionController@record');
 
 Route::get('/store/list', 'StoreController@index');
 Route::get('/store/{store}/contact', 'StoreController@contact');

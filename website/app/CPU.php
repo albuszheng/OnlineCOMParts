@@ -21,7 +21,16 @@ class CPU extends Model
      */
     public $timestamps = false;
 
-    public function getCPUByName($name) {
+    public static function getCPU() {
+        $CPU = DB::table('c_p_us')
+            ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
+//            ->join('inventory', 'inventory.ProductID', '=', 'products.id')
+//            ->join('store', 'store.id', '=', 'inventory.StoreID')
+            ->get();
+        return $CPU;
+    }
+
+    public static function getCPUByName($name) {
         $CPU = DB::table('c_p_us')
             ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
             ->where('Name', 'like', $name)
@@ -29,7 +38,7 @@ class CPU extends Model
         return $CPU;
     }
 
-    public function getCPUByManufacturer($manufacturerList) {
+    public static function getCPUByManufacturer($manufacturerList) {
         $CPUs = DB::table('c_p_us')
             ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
             ->whereIn('Manufacturer', $manufacturerList)
@@ -37,7 +46,7 @@ class CPU extends Model
         return $CPUs;
     }
 
-    public function getCPUBySeries($series) {
+    public static function getCPUBySeries($series) {
         $query = "%".$series."%";
         $CPUs = DB::table('c_p_us')
             ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
@@ -46,7 +55,7 @@ class CPU extends Model
         return $CPUs;
     }
 
-    public function getCPUByCoreNum($coreNumMin, $coreNumMax) {
+    public static function getCPUByCoreNum($coreNumMin, $coreNumMax) {
         $CPUs = DB::table('c_p_us')
             ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
             ->where('Cores', '>=', $coreNumMin)
@@ -55,7 +64,7 @@ class CPU extends Model
         return $CPUs;
     }
 
-    public function getCPUBySpeed($speedMin, $speedMax) {
+    public static function getCPUBySpeed($speedMin, $speedMax) {
         $CPUs = DB::table('c_p_us')
             ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
             ->where('OperatingFrenquency', '>=', $speedMin)
@@ -64,7 +73,7 @@ class CPU extends Model
         return $CPUs;
     }
 
-    public function getCPUByPower($powerMin, $powerMax) {
+    public static function getCPUByPower($powerMin, $powerMax) {
         $CPUs = DB::table('c_p_us')
             ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
             ->where('ThermalDesignPower', '>=', $powerMin)
@@ -73,7 +82,7 @@ class CPU extends Model
         return $CPUs;
     }
 
-    public function getCPUByPrice($priceMin, $priceMax) {
+    public static function getCPUByPrice($priceMin, $priceMax) {
         $CPUs = DB::table('c_p_us')
             ->join('products', 'products.ProductName', '=', 'c_p_us.Name')
             ->where('products.ProductName', '>=', $priceMin)
