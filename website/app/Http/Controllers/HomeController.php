@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\CPU;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $kind = User::find($user_id)->Role;
+        if ($kind == 'Salesperson') {
+            return redirect('/dashboard');
+        }
         return redirect('/');
     }
 

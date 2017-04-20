@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('role:Visiter');
 
 Route::get('/404', function() {
     return view('layouts.404');
@@ -27,27 +27,24 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/products/{product}', 'ProductController@detail');
-Route::get('/products/l/{category}', 'ProductController@kindList');
-Route::get('/products', 'ProductController@index');
-Route::get('/product/new', 'ProductController@create');
-Route::post('/product', 'ProductController@store');
+Route::get('/products/{product}', 'ProductController@detail')->middleware('role:Visiter');
+Route::get('/products/l/{category}', 'ProductController@kindList')->middleware('role:Visiter');
+Route::get('/products', 'ProductController@index')->middleware('role:Visiter');
+Route::get('/product/new', 'ProductController@create')->middleware(['auth','role:Salesperson']);
+Route::post('/product', 'ProductController@store')->middleware(['auth','role:Salesperson']);
 
 
-Route::get('/transaction/new/{productID}', 'TransactionController@create');
-Route::post('/transaction', 'TransactionController@store');
-Route::get('/transaction/{record}', 'TransactionController@show');
-Route::get('/transaction', 'TransactionController@index');
+Route::get('/transaction/new/{productID}', 'TransactionController@create')->middleware(['auth', 'role:Visiter']);
+Route::post('/transaction', 'TransactionController@store')->middleware(['auth', 'role:Visiter']);
+Route::get('/transaction/{record}', 'TransactionController@show')->middleware(['auth', 'role:Visiter']);
+Route::get('/transaction', 'TransactionController@index')->middleware(['auth', 'role:Visiter']);
 
 Route::get('/store/list', 'StoreController@index');
 Route::get('/store/{store}', 'StoreController@show');
 
-Route::get('/dashboard/{store}', 'SalespersonController@index');
-Route::get('/dashboard/{store}/inventory/list', 'SalespersonController@inventory');
-Route::post('/dashboard/{store}/update-inventory/{product}', 'SalespersonController@updateInventory');
-Route::post('/dashboard/{store}/new-product', 'SalespersonController@newProduct');
-
-Route::get('/customer/{customer}/transaction-history', 'CustomerController@transactionHistory');
-//Route::get('customer/{customer}/')
+Route::get('/dashboard', 'SalespersonController@index')->middleware('role:Salesperson');
+Route::get('/dashboard/inventory/list', 'SalespersonController@inventory')->middleware('role:Salesperson');
+Route::post('/dashboard/update-inventory/{product}', 'SalespersonController@updateInventory')->middleware('role:Salesperson');
+Route::post('/dashboard/new-product', 'SalespersonController@newProduct')->middleware('role:Salesperson');
 
 Route::get('/test', 'HomeController@test');

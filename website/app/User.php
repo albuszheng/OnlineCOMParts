@@ -28,10 +28,14 @@ class User extends Authenticatable
     ];
 
     public function CustomerInfo(){
-        $this->hasOne(Customer::class, 'id', 'id');
+        return $this->hasOne(Customer::class, 'id', 'id');
     }
 
     public function SalespersonInfo(){
-        $this->hasOne(Salesperson::class, 'id', 'id');
+        return $this->hasOne(Salesperson::class, 'id', 'id');
+    }
+
+    public function RoleInfo(){
+        return $this->belongsTo(Role::class, 'Role', 'Role');
     }
 }
