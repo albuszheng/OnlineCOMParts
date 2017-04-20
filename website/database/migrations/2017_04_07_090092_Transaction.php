@@ -17,14 +17,14 @@ class Transaction extends Migration
             $table->increments('id');
             $table->unsignedInteger('CustomerID');
             $table->unsignedInteger('ProductID');
-            $table->unsignedInteger('SalespersonID');
+            $table->unsignedInteger('StoreID');
             $table->string('Quantity', 11);
             $table->dateTime('TransactionDate');
 
 //            $table->primary('id');
             $table->foreign('CustomerID')->references('id')->on('customer_info');
             $table->foreign('ProductID')->references('id')->on('products');
-            $table->foreign('SalespersonID')->references('id')->on('salesperson');
+            $table->foreign('StoreID')->references('id')->on('store');
         });
     }
 
