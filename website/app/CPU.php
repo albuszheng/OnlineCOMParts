@@ -91,4 +91,8 @@ class CPU extends Model
         return $CPUs;
     }
 
+    public function product() {
+        return $this->hasMany(Product::class, 'Name', 'ProductName');
+    }
+
 }

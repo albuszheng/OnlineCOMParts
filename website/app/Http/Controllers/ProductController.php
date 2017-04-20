@@ -25,7 +25,7 @@ class ProductController extends Controller
                 return view("products.product_list", ["products" => CPU::getCPU(), "kind" => "CPU"]);
                 break;
             case "gpu":
-                return view("products.product_list", ["products" => VideoCard::getGPU(), "kind" => "GPU"]);
+                return view("products.product_list", ["products" => VideoCard::getVideoCard(), "kind" => "GPU"]);
                 break;
             case "memory":
                 return view("products.product_list", ["products" => Memory::getMemory(), "kind" => "Memory"]);
@@ -41,8 +41,7 @@ class ProductController extends Controller
     }
 
     public function detail($id) {
-        $res = Product::findProduct($id);
-        $spec = Product::findSpec($res->id, $res->ProductKind);
-        return view('products.product_detail', ["spec" => $spec, "product" => $res]);
+        $res = Product::find($id)->first();
+        return view('products.product_detail', ["product" => $res, "kind" => $res->ProductKind]);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Store extends Model
 {
+
     protected $table = 'store';
     protected $primaryKey = 'id';
 
@@ -35,5 +36,12 @@ class Store extends Model
         return $stores;
     }
 
+    public function Store() {
+        return $this->hasMany(Salesperson::class, 'StoreID', 'id');
+    }
+
+    public function Region() {
+        return $this->belongsTo(Region::class, 'RegionID', 'id');
+    }
 
 }
