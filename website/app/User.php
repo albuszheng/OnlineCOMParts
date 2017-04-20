@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function CustomerInfo(){
+        $this->hasOne(Customer::class, 'id', 'id');
+    }
+
+    public function SalespersonInfo(){
+        $this->hasOne(Salesperson::class, 'id', 'id');
+    }
 }

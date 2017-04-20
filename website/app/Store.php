@@ -67,12 +67,15 @@ class Store extends Model
         return $stores;
     }
 
-    public function Store() {
-        return $this->hasMany(Salesperson::class, 'StoreID', 'id');
+    public function Manager() {
+        return $this->hasOne(Salesperson::class, 'StoreID', 'id');
     }
 
     public function Region() {
         return $this->belongsTo(Region::class, 'RegionID', 'id');
     }
 
+    public function Inventory() {
+        return $this->hasMany(Inventory::class, 'StoreID', 'id');
+    }
 }

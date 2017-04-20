@@ -13,9 +13,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/store/list">Stores</a>
                 </li>
+                @if (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="/transaction">Orders</a>
                 </li>
+                @endif
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

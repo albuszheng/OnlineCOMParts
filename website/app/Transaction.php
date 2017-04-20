@@ -22,8 +22,8 @@ class Transaction extends Model
         return $this->belongsTo(Product::class, 'ProductID', 'id');
     }
 
-    public function Salesperson() {
-        return $this->belongsTo(Salesperson::class, 'SalespersonID', 'id');
+    public function Store() {
+        return $this->belongsTo(Store::class, 'StoreID', 'id');
     }
 
     public static function ModifyTransactionStatusByID($id) {

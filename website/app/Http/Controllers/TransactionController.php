@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use App\Inventory;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -12,22 +16,37 @@ class TransactionController extends Controller
         $this->middleware('auth');
     }
 
-    public function shoppingCart() {
-        $total = Transaction::shoppingCart();
-        return view('product/all', compact($total));
+    public function index() {
+        $customer =Customer::find(Auth::id());
+        return view('user.order_list', ['customer' => $customer]);
     }
 
-    public function makeOrder($kind) {
-        $res = Transaction::newOrder($kind);
-        return view('product/all', compact($res));
+    public function create($productID) {
+        return view('payment.make_order', ['product' => Product::find($productID), 'customer' => Customer::find(Auth::id())]);
     }
 
-    public function purchase($data) {
-        $res = Transaction::newTransaction($data);
-        return view('transaction/success', compact($res));
+    public function store() {
+        $transaction = new Transaction;
+
+        $transaction->CustomerID = Auth::id();
+        $transaction->ProductID = request('product');
+        $transaction->StoreID = request('store');
+        $transaction->Quantity = request('amount');
+        $transaction->TotalPrice = request('price');
+        $transaction->TransactionDate = \Carbon\Carbon::now();;
+
+        $inventory = Inventory::where('ProductID', request('product'))->first();
+
+        $inventory->InventoryNum -= request('amount');
+
+        $transaction->save();
+
+        session()->flash('success', 'Order Success');
+
+        return redirect('/');
     }
 
-    public function record($id) {
+    public function show($id) {
         $res = Transaction::find($id);
         return view('transaction/detail', compact($res));
     }

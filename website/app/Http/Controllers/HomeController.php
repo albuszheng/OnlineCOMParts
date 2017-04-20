@@ -23,12 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $cpu = new CPU();
-        return view('home', ['cpu' => CPU::getCPUByManufacturer(['AMD'])]);
+        return redirect('/');
     }
 
-    public function test()
-    {
-        return view('products.product_list');
-    }
 }

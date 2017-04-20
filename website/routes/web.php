@@ -34,14 +34,13 @@ Route::get('/product/new', 'ProductController@create');
 Route::post('/product', 'ProductController@store');
 
 
-Route::get('/transaction/new-order', 'TransactionController@makeOrder');
-Route::post('/transaction/new-order', 'TransactionController@purchase');
-Route::get('/transaction/{record}', 'TransactionController@record');
+Route::get('/transaction/new/{productID}', 'TransactionController@create');
+Route::post('/transaction', 'TransactionController@store');
+Route::get('/transaction/{record}', 'TransactionController@show');
+Route::get('/transaction', 'TransactionController@index');
 
 Route::get('/store/list', 'StoreController@index');
-Route::get('/store/{store}/contact', 'StoreController@contact');
-Route::get('/store/{store}/products', 'StoreController@products');
-Route::get('/store/{store}/salesperson', 'StoreController@salesperson');
+Route::get('/store/{store}', 'StoreController@show');
 
 Route::get('/dashboard/{store}', 'SalespersonController@index');
 Route::get('/dashboard/{store}/inventory/list', 'SalespersonController@inventory');

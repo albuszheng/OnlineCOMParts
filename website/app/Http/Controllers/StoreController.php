@@ -24,8 +24,14 @@ class StoreController extends Controller
         return view('transaction/success', compact($res));
     }
 
-    public function index($id) {
+    public function index() {
+        $res = Store::all();
+        return view('store.store_list', ['stores' => $res]);
+    }
+
+    public function show($id) {
         $res = Store::find($id);
-        return view('transaction/success', compact($res));
+//        $product
+        return view('store.store_info', ['store' => $res]);
     }
 }

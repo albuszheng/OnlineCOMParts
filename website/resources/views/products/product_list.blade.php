@@ -17,7 +17,7 @@
         @foreach ($products as $product)
             <div class="product-item">
                 <div class="product-info">
-                    <h3 class="name">{{ $product->Name }}</h3>
+                    <h3 class="name"><a href="/products/{{ $product->id }}">{{ $product->Name }}</a></h3>
                     <p class="kind">{{ $kind }}</p>
 {{--                    <p class="store">{{ $product->storeName }}</p>--}}
                     <p class="manufacturer">{{ $product->Manufacturer }}</p>
@@ -26,7 +26,7 @@
                     ${{ $product->Price }}
                 </p>
                 <div class="action">
-                    <a class="purchase btn btn-primary">Purchase</a>
+                    <a class="purchase btn btn-primary" href="/transaction/new/{{ $product->id }}}">Purchase</a>
                 </div>
             </div>
         @endforeach

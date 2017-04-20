@@ -20,7 +20,7 @@ class Transaction extends Migration
             $table->unsignedInteger('StoreID');
             $table->string('Quantity', 11);
             $table->dateTime('TransactionDate');
-            $table->string('TransactionStatus');
+            $table->string('TransactionStatus', 20);
             $table->float('TotalPrice', 10, 2);
 //            $table->primary('id');
             $table->foreign('CustomerID')->references('id')->on('customer_info');

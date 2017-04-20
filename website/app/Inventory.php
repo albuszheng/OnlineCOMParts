@@ -19,6 +19,10 @@ class Inventory extends Model
         return $this->belongsTo(Store::class, 'StoreID', 'id');
     }
 
+    public function Product() {
+        return $this->belongsTo(Product::class, 'ProductID', 'id');
+    }
+
     public static function ModifyInventoryNumByID($productid, $newNum) {
         $now = new DateTime();
         $inventory = DB::table('inventory')

@@ -1,22 +1,22 @@
 @extends('layouts.master')
 
 @section('title')
-    OCPS {{ $customer->name }} Order List
+    OCPS, {{ $customer->FullName }}'s Order History
 @endsection
 
 @section('content')
     <h4>Order List</h4>
-    @foreach ($orders as $order)
+{{--    <p>{{ $transactions }}</p>--}}
+    @foreach ($customer->Transactions as $order)
+        {{--<p>{{ $order }}</p>--}}
         <div class="order-item container">
-            <div class="col-2">
-                <img class="product-image" href={{ $order->productImage }}>
-            </div>
             <div class="order-info col-10">
                 <h4 class="order-id">{{ $order->id }}</h4>
-                <p class="product-name">{{ $order->productName }}</p>
-                <p class="store">{{ $order->storeName }}</p>
-                <p class="price">{{ $order->price }}</p>
-                <p class="time">{{ $order->time }}</p>
+                <p class="product-name">{{ $order->Product->ProductName }}</p>
+                <p class="store">{{ $order->Store->Name }}</p>
+                <p class="price">{{ $order->TotalPrice }}</p>
+                <p class="status">{{ $order->TransactionStatus }}</p>
+                <p class="time">{{ $order->TransactionDate }}</p>
             </div>
         </div>
     @endforeach
