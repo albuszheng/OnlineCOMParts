@@ -26,8 +26,15 @@ class TransactionController extends Controller
         return view('payment.make_order', ['product' => Product::find($productID), 'customer' => Customer::find(Auth::id())]);
     }
 
-    public function store() {
+    public function store(Request $request) {
         $transaction = new Transaction;
+
+        $this->validate($request, [
+            'amount' => 'min:1|required',
+            'price' => 'required',
+            'product' => 'required',
+            'store' => 'required',
+        ]);
 
         $transaction->CustomerID = Auth::id();
         $transaction->ProductID = request('product');

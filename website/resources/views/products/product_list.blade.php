@@ -11,9 +11,11 @@
     </ol>
     <div class="row product-list">
     <div class="col-3">
+        <h4>Query Condition</h4>
+        <br>
         <form class="filter">
-            <div class="price">a</div>
-            <div class="stores">d</div>
+            <div class="price"><h6>Price</h6></div>
+            <div class="stores"><h6>Store</h6></div>
         </form>
     </div>
     <div class="col-9">

@@ -51,8 +51,15 @@ class ProductController extends Controller
         return view('dashboard.new_product');
     }
 
-    public function store(){
+    public function store(Request $request){
         $product = new Product;
+
+        $this->validate($request, [
+            'product-name' => 'min:0|required',
+            'product-price' => 'required|min:0',
+            'product-kind' => 'required',
+            'product-inventory' => 'required|min:0',
+        ]);
 
         $product->ProductName = request('product-name');
         $product->Price = request('product-price');
@@ -66,8 +73,6 @@ class ProductController extends Controller
         $inventory->ProductID = $product->id;
         $inventory->InventoryNum = request('product-inventory');
         $inventory->LastUpdate = \Carbon\Carbon::now();
-
-//        $inventory->save();
 
         session()->flash('message', 'New Product Added');
 
