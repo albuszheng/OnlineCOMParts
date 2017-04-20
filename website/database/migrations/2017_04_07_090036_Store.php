@@ -15,7 +15,7 @@ class Store extends Migration
     {
         Schema::create('store', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Address', 11);
+            $table->string('Address', 45);
             $table->string('Name', 11);
             $table->string('SalespersonNum', 11);
             $table->unsignedInteger('ManagerID');

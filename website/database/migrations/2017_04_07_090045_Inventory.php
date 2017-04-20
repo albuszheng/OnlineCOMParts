@@ -16,7 +16,7 @@ class Inventory extends Migration
         Schema::create('inventory', function (Blueprint $table) {
             $table->unsignedInteger('StoreID');
             $table->unsignedInteger('ProductID');
-            $table->string('InventoryNum', 11);
+            $table->integer('InventoryNum');
             $table->dateTime('LastUpdate');
 
             $table->primary(['StoreID', 'ProductID']);
