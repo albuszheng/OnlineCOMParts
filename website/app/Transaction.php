@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+    public $timestamps = false;
+
     public function Customer() {
         return $this->belongsTo(Customer::class, 'CustomerID', 'id');
     }

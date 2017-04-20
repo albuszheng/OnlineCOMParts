@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class customer_business extends Model
 {
+    public $timestamps = false;
     //
 }

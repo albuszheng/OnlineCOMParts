@@ -30,6 +30,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/products/{product}', 'ProductController@detail');
 Route::get('/products/l/{category}', 'ProductController@kindList');
 Route::get('/products', 'ProductController@index');
+Route::get('/product/new', 'ProductController@create');
+Route::post('/product', 'ProductController@store');
 
 
 Route::get('/transaction/new-order', 'TransactionController@makeOrder');

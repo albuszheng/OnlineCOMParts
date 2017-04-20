@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 class Product extends Model
 {
 
+    public $timestamps = false;
+
     public function CPU() {
         return $this->belongsTo(CPU::class, 'ProductName', 'Name');
     }
