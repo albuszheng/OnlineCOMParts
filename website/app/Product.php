@@ -28,4 +28,8 @@ class Product extends Model
         return $this->belongsTo(Storage::class, 'ProductName', 'Name');
     }
 
+    public function Inventory() {
+        return $this->hasOne(Inventory::class, 'ProductID', 'id');
+    }
+
 }

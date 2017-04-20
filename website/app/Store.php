@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    //
+    public function Store() {
+        return $this->hasMany(Salesperson::class, 'StoreID', 'id');
+    }
+
+    public function Region() {
+        return $this->belongsTo(Region::class, 'RegionID', 'id');
+    }
 }
