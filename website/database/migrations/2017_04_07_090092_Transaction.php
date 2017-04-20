@@ -17,10 +17,11 @@ class Transaction extends Migration
             $table->increments('id');
             $table->unsignedInteger('CustomerID');
             $table->unsignedInteger('ProductID');
-            $table->unsignedInteger('SalespersonID');
+            $table->unsignedInteger('StoreID');
             $table->string('Quantity', 11);
             $table->dateTime('TransactionDate');
-
+            $table->string('TransactionStatus');
+            $table->float('TotalPrice', 10, 2);
 //            $table->primary('id');
             $table->foreign('CustomerID')->references('id')->on('customer_info');
             $table->foreign('ProductID')->references('id')->on('products');
