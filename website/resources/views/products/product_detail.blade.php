@@ -6,14 +6,14 @@
 
 @section('content')
     <div class="row">
-        <div class="col-3 info-box">
+        <div class="col-3 info-section">
             <h2 class="product-name">{{ $product->ProductName }}</h2>
             <p class="kind">{{ $product->ProductKind }}</p>
             <p class="price">Price: ${{ $product->Price }}</p>
-            <form class="actions">
+            <div class="actions">
                 <p class="amount"></p>
-                <input type="submit" title="Purchase">
-            </form>
+                <a class="purchase btn btn-primary" href="/transaction/new/{{ $product->id }}}">Purchase</a>
+            </div>
         </div>
     </div>
     @include('specs.'.$kind)

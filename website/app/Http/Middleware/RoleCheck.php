@@ -19,10 +19,10 @@ class RoleCheck
     {
 
         if (!Auth::check()) {
-            if ($role == 'Visiter') {
-                return redirect('/');
+            if ($role != 'Visiter') {
+                return redirect('/login');
             }
-            return redirect('/login');
+            return $next($request);
         }
 
         $user_role = (Auth::user()->RoleInfo->Role == $role) || (Auth::user()->RoleInfo->Father == $role);

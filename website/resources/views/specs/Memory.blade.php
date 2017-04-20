@@ -1,5 +1,7 @@
 <hr>
+<br>
 <h4>Specs</h4>
+<br>
 <div class="row specs">
     <div class="col-6">
         <p><span class="spec-name">Name</span>: <span class="spec-value">{{ $product->ProductName }}</span></p>

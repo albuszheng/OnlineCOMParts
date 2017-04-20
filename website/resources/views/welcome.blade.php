@@ -8,7 +8,7 @@ Welcome to OCPS
 <div class="row">
     <div class="col-4 cato-item">
         <div class="cato-img cpu">
-            <div class="rounded-circle" style="background-image: url('/img/cpu.png'); height: 320px; background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
+            <div class="rounded-circle" style="background-image: url('/img/cpu.png'); height: 220px;  background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
         </div>
         <h2 class="cato-title cpu">
             <a href="/products/l/cpu">CPU</a>
@@ -20,7 +20,7 @@ Welcome to OCPS
 
     <div class="col-4 cato-item">
         <div class="cato-img motherboard">
-            <div class="rounded-circle" style="background-image: url('/img/motherboard.png'); height: 320px; background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
+            <div class="rounded-circle" style="background-image: url('/img/motherboard.png'); height: 220px;  background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
         </div>
         <h2 class="cato-title cpu">
             <a href="/products/l/motherboard">Motherboard</a>
@@ -32,7 +32,7 @@ Welcome to OCPS
 
     <div class="col-4 cato-item">
         <div class="cato-img memory">
-            <div class="rounded-circle" style="background-image: url('/img/memory.png'); height: 320px; background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
+            <div class="rounded-circle" style="background-image: url('/img/memory.png'); height: 220px;  background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
         </div>
         <h2 class="cato-title memory">
             <a href="/products/l/memory">Memory</a>
@@ -44,7 +44,7 @@ Welcome to OCPS
 
     <div class="col-4 cato-item">
         <div class="cato-img gpu">
-            <div class="rounded-circle" style="background-image: url('/img/gpu.png'); height: 320px; background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
+            <div class="rounded-circle" style="background-image: url('/img/gpu.png'); height: 220px;  background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
         </div>
         <h2 class="cato-title cpu">
             <a href="/products/l/gpu">GPU</a>
@@ -56,7 +56,7 @@ Welcome to OCPS
 
     <div class="col-4 cato-item">
         <div class="cato-img hard-drive">
-            <div class="rounded-circle" style="background-image: url('/img/harddrive.png'); height: 320px; background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
+            <div class="rounded-circle" style="background-image: url('/img/harddrive.png'); height: 220px;  background-position: center; background-size: contain; background-repeat: no-repeat;"></div>
         </div>
         <h2 class="cato-title hard-drive">
             <a href="/products/l/harddrive">Hard Drive</a>

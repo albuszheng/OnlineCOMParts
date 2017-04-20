@@ -21,7 +21,19 @@ class SalespersonController extends Controller
         $salesperson = Auth::user()->SalespersonInfo;
         $dailyBS = Transaction::DailyBestseller($salesperson->StoreID);
         $monthlyBS = Transaction::MonthlyBestseller($salesperson->StoreID);
-        return view("dashboard.index", ['salesperson' => $salesperson, 'daily_bs' => Product::find($dailyBS->ProductID), 'monthly_bs' => Product::find($monthlyBS->ProductID)]);
+        if (!$dailyBS) {
+            if (!$monthlyBS) {
+                return view("dashboard.index", ['salesperson' => $salesperson, 'daily_bs' => null, 'monthly_bs' => null]);
+            }else{
+                return view("dashboard.index", ['salesperson' => $salesperson, 'daily_bs' => null, 'monthly_bs' => Product::find($monthlyBS->ProductID)]);
+            }
+        } else {
+            if (!$monthlyBS) {
+                return view("dashboard.index", ['salesperson' => $salesperson, 'daily_bs' => Product::find($dailyBS->ProductID), 'monthly_bs' => null]);
+            }else{
+                return view("dashboard.index", ['salesperson' => $salesperson, 'daily_bs' => Product::find($dailyBS->ProductID), 'monthly_bs' => Product::find($monthlyBS->ProductID)]);
+            }
+        }
     }
 
     public function inventory()

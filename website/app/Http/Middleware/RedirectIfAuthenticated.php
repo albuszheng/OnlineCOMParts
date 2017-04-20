@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
 //            session()->flash('message','Welcome Back!');
-            return redirect('/');
+            return redirect('/home');
         }
 
         return $next($request);

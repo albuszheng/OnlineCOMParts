@@ -2,10 +2,16 @@
 
 @section('content')
     <h1>Dashboard</h1>
+    @if($daily_bs || $monthly_bs)
     <div class="info-box real-time-best-seller">
+        @if ($daily_bs)
         <h5><span>Daily BestSeller: </span>{{ $daily_bs->ProductName }}</h5>
+        @endif
+        @if ($monthly_bs)
         <h5><span>Monthly BestSeller: </span>{{ $monthly_bs->ProductName }}</h5>
+        @endif
     </div>
+    @endif
     <div class="info-box orders">
         <h4>Transactions</h4>
         <div class="container-fluid">

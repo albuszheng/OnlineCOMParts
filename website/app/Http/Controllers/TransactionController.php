@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Inventory;
 use App\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -37,12 +38,14 @@ class TransactionController extends Controller
 
         $inventory = Inventory::where('ProductID', request('product'))->first();
 
-        $inventory->InventoryNum -= request('amount');
+        $newIn = $inventory->InventoryNum - request('amount');
+
+        Inventory::where('ProductID', request('product'))->update(['InventoryNum'=>$newIn, 'LastUpdate'=>Carbon::today()]);
 
         $transaction->save();
-        $inventory->save();
+//        $inventory->save();
 
-        session()->flash('success', 'Order Success');
+        session()->flash('message', 'Order Success');
 
         return redirect('/');
     }

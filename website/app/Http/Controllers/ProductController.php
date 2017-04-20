@@ -43,7 +43,7 @@ class ProductController extends Controller
     }
 
     public function detail($id) {
-        $res = Product::find($id)->first();
+        $res = Product::find($id);
         return view('products.product_detail', ["product" => $res, "kind" => $res->ProductKind]);
     }
 

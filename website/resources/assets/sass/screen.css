@@ -7,4 +7,55 @@
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px; }
 
+.cato-item {
+  margin-top: 50px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee; }
+  .cato-item .cato-img {
+    margin-bottom: 30px;
+    width: 220px;
+    margin-left: 50px; }
+    .cato-item .cato-img .rounded-circle {
+      border: 1px solid #eee; }
+  .cato-item h2, .cato-item p {
+    text-align: center; }
+
+ol.breadcrumb {
+  margin-top: 20px;
+  margin-bottom: 30px; }
+
+.product-item {
+  padding-left: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px; }
+  .product-item .product-info {
+    display: inline-block;
+    width: 33%; }
+    .product-item .product-info p, .product-item .product-info h3 {
+      margin: 0px; }
+  .product-item p.price {
+    display: inline-block;
+    width: 33%;
+    margin-top: 30px;
+    margin-left: 75px;
+    font-size: 1.5em; }
+  .product-item .action {
+    margin-left: 55px;
+    display: inline-block;
+    position: relative;
+    width: 10%;
+    margin-top: 30px;
+    right: 0; }
+
+.info-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 30px; }
+
+.store-item {
+  padding-bottom: 20px; }
+
 /*# sourceMappingURL=screen.css.map */
