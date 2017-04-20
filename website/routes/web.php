@@ -34,17 +34,19 @@ Route::get('/product/new', 'ProductController@create')->middleware(['auth','role
 Route::post('/product', 'ProductController@store')->middleware(['auth','role:Salesperson']);
 
 
-Route::get('/transaction/new/{productID}', 'TransactionController@create')->middleware(['auth', 'role:Visiter']);
-Route::post('/transaction', 'TransactionController@store')->middleware(['auth', 'role:Visiter']);
-Route::get('/transaction/{record}', 'TransactionController@show')->middleware(['auth', 'role:Visiter']);
-Route::get('/transaction', 'TransactionController@index')->middleware(['auth', 'role:Visiter']);
+Route::get('/transaction/new/{productID}', 'TransactionController@create')->middleware(['auth', 'role:Customer']);
+Route::post('/transaction', 'TransactionController@store')->middleware(['auth', 'role:Customer']);
+Route::get('/transaction/{record}', 'TransactionController@show')->middleware(['auth', 'role:Customer']);
+Route::get('/transaction', 'TransactionController@index')->middleware(['auth', 'role:Customer']);
+Route::post('/transaction/{id}/shipped', 'TransactionController@ship')->middleware(['auth', 'role:Salesperson']);
 
 Route::get('/store/list', 'StoreController@index');
 Route::get('/store/{store}', 'StoreController@show');
 
 Route::get('/dashboard', 'SalespersonController@index')->middleware('role:Salesperson');
-Route::get('/dashboard/inventory/list', 'SalespersonController@inventory')->middleware('role:Salesperson');
-Route::post('/dashboard/update-inventory/{product}', 'SalespersonController@updateInventory')->middleware('role:Salesperson');
+Route::get('/dashboard/transactions', 'SalespersonController@transactions')->middleware('role:Salesperson');
+Route::get('/dashboard/products', 'SalespersonController@inventory')->middleware('role:Salesperson');
+Route::post('/dashboard/inventory/{productID}/update', 'SalespersonController@updateInventory')->middleware('role:Salesperson');
 Route::post('/dashboard/new-product', 'SalespersonController@newProduct')->middleware('role:Salesperson');
 
 Route::get('/test', 'HomeController@test');

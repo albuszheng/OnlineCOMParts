@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Inventory;
@@ -16,24 +18,31 @@ class SalespersonController extends Controller
 
     public function index()
     {
-        return view("dashboard.index", ['Salesperson' => Auth::user()->SalespersonInfo]);
+        $salesperson = Auth::user()->SalespersonInfo;
+        $dailyBS = Transaction::DailyBestseller($salesperson->StoreID);
+        $monthlyBS = Transaction::MonthlyBestseller($salesperson->StoreID);
+        return view("dashboard.index", ['salesperson' => $salesperson, 'daily_bs' => Product::find($dailyBS->ProductID), 'monthly_bs' => Product::find($monthlyBS->ProductID)]);
     }
 
-    public function inventory($storeId)
+    public function inventory()
     {
-        $res = Inventory::findStore($storeId);
-        return view("dashboard/inventoryList", compact($res));
+        $salesperson = Auth::user()->SalespersonInfo;
+        return view("dashboard.products", ['salesperson' => $salesperson]);
     }
 
-    public function updateInventory()
+    public function updateInventory($productID)
     {
-        $res_p = Inventory::update();
+        if (Inventory::where('ProductID', $productID)->update(['InventoryNum'=>request('newInventory'), 'LastUpdate'=>Carbon::today()])){
+            session()->flash('message', 'update success');
+        }
+        $salesperson = Auth::user()->SalespersonInfo;
+        return redirect('/dashboard/products');
+
     }
 
-    public function newProduct()
-    {
-        $res_p = Product::new();
-        $res_I = Inventory::update();
-        return view("dashboard/index");
+    public function transactions(){
+        $salesperson = Auth::user()->SalespersonInfo;
+        return view("dashboard.transactions", ['salesperson' => $salesperson]);
+
     }
 }

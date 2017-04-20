@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use DateTime;
 
@@ -11,6 +12,7 @@ class Transaction extends Model
 {
     protected $table = 'transactions';
     protected $primaryKey = 'id';
+    protected $dates = ['TransactionDate'];
 
     public $timestamps = false;
 
@@ -37,10 +39,11 @@ class Transaction extends Model
     public static function DailyBestseller($storeid) {
         $now = new DateTime();
         $transaction = DB::table('transactions')
+            ->selectRaw('ProductID')
             ->where('StoreID', $storeid)
-            ->where('TransactionDate', $now)
+            ->whereDate('TransactionDate', Carbon::today())
             ->groupBy('ProductID')
-            ->orderBy('count()','desc')
+            ->orderByRaw('count(*) desc')
             ->get()
             ->first();
 
@@ -50,11 +53,11 @@ class Transaction extends Model
     public static function MonthlyBestseller($storeid) {
         $now = new DateTime();
         $transaction = DB::table('transactions')
+            ->selectRaw('ProductID')
             ->where('StoreID', $storeid)
-            ->where('TransactionDate', '>=', $now - 15)
-            ->where('TransactionDate', '>=', $now + 15)
+            ->whereMonth('TransactionDate', Carbon::today()->format('m'))
             ->groupBy('ProductID')
-            ->orderBy('count()','desc')
+            ->orderByRaw('count(*) desc')
             ->get()
             ->first();
 

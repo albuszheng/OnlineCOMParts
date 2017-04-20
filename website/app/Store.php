@@ -78,4 +78,8 @@ class Store extends Model
     public function Inventory() {
         return $this->hasMany(Inventory::class, 'StoreID', 'id');
     }
+
+    public function Transactions() {
+        return $this->hasMany(Transaction::class, 'StoreID', 'id');
+    }
 }

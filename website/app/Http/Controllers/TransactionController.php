@@ -40,6 +40,7 @@ class TransactionController extends Controller
         $inventory->InventoryNum -= request('amount');
 
         $transaction->save();
+        $inventory->save();
 
         session()->flash('success', 'Order Success');
 
@@ -49,5 +50,11 @@ class TransactionController extends Controller
     public function show($id) {
         $res = Transaction::find($id);
         return view('transaction/detail', compact($res));
+    }
+
+    public function ship($id) {
+        $trans = Transaction::find($id);
+        $trans->TransactionStatus = 'Shipped';
+        $trans->save();
     }
 }
